@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import slideio
 import pytesseract
 import os,glob,csv,math,json,re,math
@@ -14,18 +8,10 @@ from IPython.display import display, HTML
 from fuzzywuzzy import fuzz
 from utils import show_images
 
-
-# In[2]:
-
-
 # Open our folder and list the number of files inside
 folder_name,type = 'A20-099','svs' # Specify the folder name (first param) and file type (second param)
 folder = glob.glob(f"{folder_name}/*.{type}")
 print(f"{len(folder)} {type} files identified.")
-
-
-# In[3]:
-
 
 columns = ['participant_id', 'stain_id', 'brain_region','label']
 csv_filename = f"{folder_name}.csv"  # Change this to your desired file name
@@ -33,10 +19,6 @@ csv_filename = f"{folder_name}.csv"  # Change this to your desired file name
 with open(csv_filename, 'w', newline='') as csvfile:
     csv_writer = csv.writer(csvfile)
     csv_writer.writerow(columns)
-
-
-# In[4]:
-
 
 label_count = 0
 
