@@ -77,4 +77,3 @@ for file in folder:
                 csv_writer = csv.writer(csv_file)
                 label = f"{participant_id}_{brain_region}_{stain_id}"
                 csv_writer.writerow([participant_id, stain_id, brain_region, label])
-
