@@ -8,7 +8,7 @@ file_name = 'Nanozoomer Registry A20-131.xlsx'
 
 # Read the xlsx file and extract the "Label" column
 df = pd.read_excel(file_name, sheet_name='Sheet1')
-labels = df['Label'].tolist()
+labels = df['label'].tolist()
 
 # Get the list of .ndpi files sorted by creation time
 svs_files = sorted([f for f in os.listdir() if f.endswith('.svs')], key=os.path.getctime)
