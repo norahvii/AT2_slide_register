@@ -5,8 +5,5 @@ At the moment this is a semi-automatic approach to creating registry files for s
 
 ## installation
 * `conda create -n paddle_env python=3.7`
-* `pip install paddlepaddle-gpu`
 * `python3 -m pip install paddlepaddle-gpu==2.5.1.post116 -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html`
-* `pip3 install paddleocr jupyterlab slideio opencv-python-headless numpy matplotlib fuzzywuzzy paddlepaddle`
-* `pip install paddlepaddle`
-* `pip install python-Levenshtein`
+* `pip3 install paddleocr jupyterlab slideio opencv-python-headless numpy matplotlib fuzzywuzzy paddlepaddle python-Levenshtein`
