@@ -1,5 +1,5 @@
 from paddleocr import PaddleOCR, draw_ocr
-import os,glob,csv,math,json,re,math,cv2,slideio,logging
+import os,glob,csv,math,json,re,math,cv2,slideio,logging, shutil
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
@@ -15,7 +15,7 @@ from ppocr.utils.logging import get_logger as ppocr_get_logger
 ppocr_get_logger().setLevel(logging.ERROR)
 
 # Open our folder and list the number of files inside
-folder_name,type = 'A20-131','svs' # Specify the folder name (first param) and file type (second param)
+folder_name,type = 'A21-052','svs' # Specify the folder name (first param) and file type (second param)
 folder = glob.glob(f"{folder_name}/*.{type}")
 print(f"{len(folder)} {type} files identified.")
 # Create the 'failed' folder if it doesn't exist
@@ -24,8 +24,8 @@ os.makedirs(failed_folder, exist_ok=True)
 
 def move_to_failed_folder(file, folder):
     failed_file = os.path.join(failed_folder, os.path.basename(file))
-    os.rename(file, failed_file)
-
+    shutil.move(file, failed_file)    
+    
 columns = ['participant_id', 'stain_id', 'brain_region','label']
 csv_filename = f"{folder_name}.csv"  # Change this to your desired file name
 
@@ -87,7 +87,7 @@ while good == True:
                 try:
                     # Phase 2: Gather the Stain ID:
                     logging.info("Starting Phase 2")
-                    predefined_choices = ['LB509', 'HE', 'PHF-1', 'TDP-43', '10D5'] # Stain Choices
+                    predefined_choices = ['LB509', 'HE', 'PHF-1', 'TDP-43', '10D5','pSYN'] # Stain Choices
                     stain_id = None
                     best_similarity = 0
                     for i in text_list:
